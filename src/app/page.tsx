@@ -359,23 +359,31 @@ export default function Home() {
 
           {/* Header */}
           <div className="flex flex-col items-center border-b border-white/10 pb-6 mb-6">
-            <div className="relative mb-4">
-              <img src={settings.logoUrl || 'https://via.placeholder.com/150'} alt="Logo"
-                className="h-20 w-20 rounded-2xl object-contain shadow-xl ring-2 ring-white/20" />
-              <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-emerald-400 rounded-full border-2 border-white/20 flex items-center justify-center">
+            <div className="logo-shell mb-4">
+              {settings.logoUrl ? (
+                <img src={settings.logoUrl} alt="Logo" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }} />
+              ) : (
+                <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                </svg>
+              )}
+              <div className="logo-badge">
                 <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
               </div>
             </div>
             <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight text-center">
               {settings.appName || 'Pengumuman Kelulusan'}
             </h1>
-            <p className="text-white/60 font-medium text-base mt-1">{settings.schoolName || ''}</p>
+            <p className="text-white/55 font-medium text-sm mt-1.5">{settings.schoolName || ''}</p>
           </div>
 
           {/* Running Text */}
-          <div className="marquee-wrap mb-8">
-            <span className="marquee-text">{settings.runningText || 'Selamat datang di portal pengumuman kelulusan.'}</span>
-          </div>
+          {settings.runningText && (
+            <div className="marquee-wrap mb-8">
+              <span className="marquee-text">{settings.runningText}</span>
+            </div>
+          )}
 
           {/* ─── COUNTDOWN ─── */}
           {view === 'countdown' && (
@@ -389,20 +397,20 @@ export default function Home() {
 
               <div className="grid grid-cols-4 gap-3 max-w-md mx-auto mb-6">
                 <div className="countdown-card">
-                  <span className="text-3xl md:text-5xl font-black text-white block">{pad(cd.days)}</span>
-                  <span className="text-xs text-white/50 uppercase font-semibold mt-1 block">Hari</span>
+                  <span className="countdown-num text-3xl md:text-5xl font-black text-white block">{pad(cd.days)}</span>
+                  <span className="text-[10px] md:text-xs text-white/45 uppercase font-semibold tracking-wider mt-1.5 block">Hari</span>
                 </div>
                 <div className="countdown-card">
-                  <span className="text-3xl md:text-5xl font-black text-blue-400 block">{pad(cd.hours)}</span>
-                  <span className="text-xs text-white/50 uppercase font-semibold mt-1 block">Jam</span>
+                  <span className="countdown-num text-3xl md:text-5xl font-black text-white block">{pad(cd.hours)}</span>
+                  <span className="text-[10px] md:text-xs text-white/45 uppercase font-semibold tracking-wider mt-1.5 block">Jam</span>
                 </div>
                 <div className="countdown-card">
-                  <span className="text-3xl md:text-5xl font-black text-purple-400 block">{pad(cd.minutes)}</span>
-                  <span className="text-xs text-white/50 uppercase font-semibold mt-1 block">Menit</span>
+                  <span className="countdown-num text-3xl md:text-5xl font-black text-white block">{pad(cd.minutes)}</span>
+                  <span className="text-[10px] md:text-xs text-white/45 uppercase font-semibold tracking-wider mt-1.5 block">Menit</span>
                 </div>
                 <div className="countdown-card pulse-glow">
-                  <span className="text-3xl md:text-5xl font-black text-cyan-400 block">{pad(cd.seconds)}</span>
-                  <span className="text-xs text-white/50 uppercase font-semibold mt-1 block">Detik</span>
+                  <span className="countdown-num text-3xl md:text-5xl font-black text-blue-300 block">{pad(cd.seconds)}</span>
+                  <span className="text-[10px] md:text-xs text-white/45 uppercase font-semibold tracking-wider mt-1.5 block">Detik</span>
                 </div>
               </div>
             </div>
@@ -549,19 +557,19 @@ export default function Home() {
           )}
 
           {/* Footer */}
-          <div className="mt-8 text-center">
-            <div className="flex items-center justify-center gap-2 text-white/30 text-xs">
-              <span>&copy;</span>
+          <div className="mt-8 pt-5 border-t border-white/5 text-center">
+            <div className="flex items-center justify-center gap-1.5 text-white/35 text-[11px] tracking-wide">
+              <span>©</span>
               <span>{new Date().getFullYear()}</span>
-              <span>{settings.schoolName || 'Sekolah'}</span>
-              <span>&middot;</span>
+              <span className="text-white/50">{settings.schoolName || 'Sekolah'}</span>
+              <span className="text-white/20">·</span>
               <span>v2.0</span>
               <button onClick={() => {
                 const u = prompt('Username:');
                 const p = prompt('Password:');
                 if (u && p) { setAdminUser(u); setAdminPass(p); setTimeout(handleAdminLogin, 100); }
-              }} className="opacity-20 hover:opacity-100 transition ml-2" title="Admin Login">
-                <svg className="w-3 h-3 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+              }} className="opacity-30 hover:opacity-100 transition ml-1.5" title="Admin Login">
+                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
               </button>
             </div>
           </div>

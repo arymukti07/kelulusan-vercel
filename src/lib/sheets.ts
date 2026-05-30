@@ -29,14 +29,14 @@ let memoryStore: {
   settings: {
     appName: 'Pengumuman Kelulusan',
     schoolName: 'SMA Negeri 1 Contoh',
-    logoUrl: 'https://via.placeholder.com/150',
+    logoUrl: '',
     announcementDate: new Date(Date.now() + 86400000 * 3).toISOString().slice(0, 16),
-    runningText: 'Selamat datang di portal pengumuman kelulusan. Silakan cek hasil kelulusan Anda.',
+    runningText: 'Selamat datang di Portal Pengumuman Kelulusan. Masukkan NISN untuk mengecek hasil kelulusan Anda.',
     primaryColor: '#3b82f6',
     secondaryColor: '#8b5cf6',
     enableQR: 'true',
     enableConfetti: 'true',
-    footerText: '© 2026 SMA Negeri 1 Contoh. All rights reserved.',
+    footerText: 'SMA Negeri 1 Contoh',
   },
   students: [
     { NISN: '0012345678', NIS: '12345', Nama: 'Budi Santoso', Kelas: 'XII IPA 1', Status: 'LULUS', Pesan: 'Selamat! Anda dinyatakan lulus dengan baik.', LinkSKL: '' },
