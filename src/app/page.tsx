@@ -397,20 +397,20 @@ export default function Home() {
 
               <div className="grid grid-cols-4 gap-3 max-w-md mx-auto mb-6">
                 <div className="countdown-card">
-                  <span className="countdown-num text-3xl md:text-5xl font-black text-white block">{pad(cd.days)}</span>
-                  <span className="text-[10px] md:text-xs text-white/45 uppercase font-semibold tracking-wider mt-1.5 block">Hari</span>
+                  <span className="countdown-num text-3xl md:text-5xl font-black text-white">{pad(cd.days)}</span>
+                  <span className="text-[10px] md:text-xs text-white/45 uppercase font-semibold tracking-wider">Hari</span>
                 </div>
                 <div className="countdown-card">
-                  <span className="countdown-num text-3xl md:text-5xl font-black text-white block">{pad(cd.hours)}</span>
-                  <span className="text-[10px] md:text-xs text-white/45 uppercase font-semibold tracking-wider mt-1.5 block">Jam</span>
+                  <span className="countdown-num text-3xl md:text-5xl font-black text-white">{pad(cd.hours)}</span>
+                  <span className="text-[10px] md:text-xs text-white/45 uppercase font-semibold tracking-wider">Jam</span>
                 </div>
                 <div className="countdown-card">
-                  <span className="countdown-num text-3xl md:text-5xl font-black text-white block">{pad(cd.minutes)}</span>
-                  <span className="text-[10px] md:text-xs text-white/45 uppercase font-semibold tracking-wider mt-1.5 block">Menit</span>
+                  <span className="countdown-num text-3xl md:text-5xl font-black text-white">{pad(cd.minutes)}</span>
+                  <span className="text-[10px] md:text-xs text-white/45 uppercase font-semibold tracking-wider">Menit</span>
                 </div>
                 <div className="countdown-card pulse-glow">
-                  <span className="countdown-num text-3xl md:text-5xl font-black text-blue-300 block">{pad(cd.seconds)}</span>
-                  <span className="text-[10px] md:text-xs text-white/45 uppercase font-semibold tracking-wider mt-1.5 block">Detik</span>
+                  <span className="countdown-num text-3xl md:text-5xl font-black text-blue-300">{pad(cd.seconds)}</span>
+                  <span className="text-[10px] md:text-xs text-white/45 uppercase font-semibold tracking-wider">Detik</span>
                 </div>
               </div>
             </div>
